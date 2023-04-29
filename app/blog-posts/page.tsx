@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import ErrorComponent from '../components/ErrorComponent';
 import { Post } from '../types/Post';
 import PostItem from './PostItem';
-import PostsLoading from './PostsLoading';
 
 const BlogPosts = () => {
   const [posts, setPosts] = useState<Post[] | undefined>();
@@ -35,9 +34,8 @@ const BlogPosts = () => {
       controller.abort();
     };
   }, []);
-  console.log(posts);
+
   if (fetchState.error) return <ErrorComponent />;
-  if (fetchState.loading) return <PostsLoading />;
 
   return (
     <div>
